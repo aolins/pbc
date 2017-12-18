@@ -1,6 +1,6 @@
 package bootcamp;
 
-public class Threads{
+public class OopPrinciples{
 
   public static void main(String[] args){
 
