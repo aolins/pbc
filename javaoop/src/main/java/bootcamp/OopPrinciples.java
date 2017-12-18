@@ -4,7 +4,7 @@ public class OopPrinciples{
 
   public static void main(String[] args){
 
-    // Creates an array with 6 columns and 20 rows
+    // Creates an array with 6 columns and 24 rows
     final String[][] arrayWithHeader = {
       {"PERSON", "Sterling B. Rosario", "612-388-9263", "December 30, 1992", "Public affairs specialist", "2011 Bentley Continental GTC", "158.8 pounds (72.2 kilograms)"},
       {"PERSON", "Amber M. Doss", "276-859-0345", "February 5, 1968", "Tour escort", "2011 Alpina B5", "139.5 pounds (63.4 kilograms)"},
