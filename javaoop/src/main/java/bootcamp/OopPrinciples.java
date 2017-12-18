@@ -14,10 +14,10 @@ public class OopPrinciples{
       {"CAR", "BMW", "X6", "2016", "Premium Gasoline", "567 hp", "5.2 sec"},
       {"CAR", "SAAB", "9-7X", "2009", "Regular Gasoline", "285 hp", "7.2 sec"},
       {"CAR", "CADILLAC", "XT5", "2017", "Regular Gasoline", "310 hp", "6.6 sec"},
-      {"PLANE", "Boeing", "737", "85-215 seats", "10204 km", "11300 m", "36 m"},
-      {"PLANE", "Boeing", "787", "210-330 seats", "14800 km", "13100 m", "60.12 m"},
-      {"PLANE", "Airbus", "A380", "544 seats", "15200 km", "13100 m", "80 m"},
-      {"PLANE", "Airbus", "A330", "406 seats", "13450 km", "12500 m", "60.3 m"},
+      {"PLANE", "Boeing", "737", "85-215 seats", "10204 km", "1966–present", "36 m"},
+      {"PLANE", "Boeing", "787", "210-330 seats", "14800 km", "2007–present", "60.12 m"},
+      {"PLANE", "Airbus", "A380", "544 seats", "15200 km", "2005–present", "80 m"},
+      {"PLANE", "Airbus", "A330", "406 seats", "13450 km", "1992–present", "60.3 m"},
       {"SHIP", "Oasis of the Seas", "Caribbean", "41.9 km/h", "5400 passengers", "361.6 m", "225,282 GT"},
       {"SHIP", "Royal Princess", "Various", "40.7 km/h", "3600 passengers", "330 m", "142,714 GT"},
       {"SHIP", "Carnival Vista", "Caribbean", "43 km/h", "3,936 passengers", "324 m", "133,500 GT"},
@@ -33,55 +33,44 @@ public class OopPrinciples{
 
     // Prints out data by datatype
     for (int i = 0; i < 24; i++) {
-
+      // Divide the data with newline
+      System.out.println();
       if (arrayWithHeader[i][0].equals("PERSON")) {
-        System.out.println(
-          String.format("DATA TYPE: %s\nNAME: %s\nDATE OF BIRTH: %s\nOCCUPATION: %s\nVEHICLE: %s\n",
-            arrayWithHeader[i][0],
-            arrayWithHeader[i][1],
-            arrayWithHeader[i][3],
-            arrayWithHeader[i][4],
-            arrayWithHeader[i][5]));
+        System.out.println("Person");
+        System.out.println("NAME: " + arrayWithHeader[i][1]);
+        System.out.println("DATE OF BIRTH: " + arrayWithHeader[i][3]);
+        System.out.println("OCCUPATION: " + arrayWithHeader[i][4]);
+        System.out.println("VEHICLE: " + arrayWithHeader[i][5]);
       } else if (arrayWithHeader[i][0].equals("CAR")) {
-        System.out.println(
-          String.format("DATA TYPE: %s\nBRAND: %s\nMODEL: %s\nYEAR: %s\nHORSEPOWER: %s\n",
-            arrayWithHeader[i][0],
-            arrayWithHeader[i][1],
-            arrayWithHeader[i][2],
-            arrayWithHeader[i][3],
-            arrayWithHeader[i][5]));
+        System.out.println("Car");
+        System.out.println("BRAND: " + arrayWithHeader[i][1]);
+        System.out.println("MODEL: " + arrayWithHeader[i][2]);
+        System.out.println("YEAR: " + arrayWithHeader[i][3]);
+        System.out.println("HORSEPOWER: " + arrayWithHeader[i][5]);
       } else if (arrayWithHeader[i][0].equals("PLANE")) {
-        System.out.println(
-          String.format("DATA TYPE: %s\nMANUFACTURER: %s\nMODEL: %s\nCAPACITY: %s\nRANGE: %s\n",
-            arrayWithHeader[i][0],
-            arrayWithHeader[i][1],
-            arrayWithHeader[i][2],
-            arrayWithHeader[i][3],
-            arrayWithHeader[i][4]));
+        System.out.println("Plane");
+        System.out.println("MANUFACTURER: " + arrayWithHeader[i][1]);
+        System.out.println("MODEL: " + arrayWithHeader[i][2]);
+        System.out.println("CAPACITY: " + arrayWithHeader[i][3]);
+        System.out.println("RANGE: " + arrayWithHeader[i][4]);
       } else if (arrayWithHeader[i][0].equals("SHIP")) {
-        System.out.println(
-          String.format("DATA TYPE: %s\nNAME: %s\nCAPACITY: %s\nLENGTH: %s\nROUTE: %s\n",
-            arrayWithHeader[i][0],
-            arrayWithHeader[i][1],
-            arrayWithHeader[i][4],
-            arrayWithHeader[i][5],
-            arrayWithHeader[i][2]));
+        System.out.println("Ship");
+        System.out.println("NAME: " + arrayWithHeader[i][1]);
+        System.out.println("CAPACITY: " + arrayWithHeader[i][4]);
+        System.out.println("LENGTH: " + arrayWithHeader[i][5]);
+        System.out.println("ROUTE: " + arrayWithHeader[i][2]);
       } else if (arrayWithHeader[i][0].equals("DOG")) {
-        System.out.println(
-          String.format("DATA TYPE: %s\nBREED: %s\nORIGIN: %s\nPLACE BY POPULARITY: %s\n",
-            arrayWithHeader[i][0],
-            arrayWithHeader[i][1],
-            arrayWithHeader[i][2],
-            arrayWithHeader[i][6]));
+        System.out.println("Dog");
+        System.out.println("BREED: " + arrayWithHeader[i][1]);
+        System.out.println("ORIGIN: " + arrayWithHeader[i][2]);
+        System.out.println("PLACE BY POPULARITY: " + arrayWithHeader[i][6]);
       } else if (arrayWithHeader[i][0].equals("CRYPTOCURRENCY")) {
-        System.out.println(
-          String.format("DATA TYPE: %s\nNAME: %s\nCODE: %s\nDESCRIPTION: %s\n",
-            arrayWithHeader[i][0],
-            arrayWithHeader[i][1],
-            arrayWithHeader[i][2],
-            arrayWithHeader[i][3]));
+        System.out.println("Crypto currency");
+        System.out.println("NAME: " + arrayWithHeader[i][1]);
+        System.out.println("CODE: " + arrayWithHeader[i][2]);
+        System.out.println("DESCRIPTION: " + arrayWithHeader[i][3]);
       } else {
-        System.out.println(String.format("UNSUPPPORTED DATA TYPE: %s\n", arrayWithHeader[i][0]));
+        System.out.println("UNSUPPPORTED DATA TYPE: " + arrayWithHeader[i][0]);
       }
     }
   }
