@@ -6,17 +6,35 @@ public class Threads{
 
       // Creates an array with 6 columns and 20 rows
       final String[][] arrayWithoutHeader = {
-          {"Sterling B. Rosario", "Steven G. Cameron", "Amber M. Doss", "Troy D. Lee", "Brenda M. Goldman", "James M. McCracken", "Hope C. Edwards", "James M. Hicks", "Carolyn T. Muniz", "David I. Rojas", "Donald V. McKinnon", "Erik M. Robinson", "Joyce R. Murray", "William R. Levitt", "Eugene L. Johnson", "Jerry E. Dorsey", "Joseph K. Wallace", "Daisy J. Glover", "Debbie C. Allen", "David A. Bryce"},
-          {"612-388-9263", "814-577-8878", "276-859-0345", "650-687-9895", "715-469-4937", "239-732-0630", "208-549-2256", "806-794-2570", "815-772-5445", "786-236-8216", "518-701-0696", "609-546-2522", "352-408-6547", "510-927-9462", "850-941-3589", "214-887-9398", "201-326-1372", "646-277-7890", "978-254-0960", "310-312-0940"},
-          {"December 30, 1992", "December 23, 1992", "December 23, 1986", "July 6, 1933", "February 5, 1968", "February 2, 1969", "November 6, 1994", "February 24, 1990", "January 25, 1943", "March 11, 1977", "March 7, 1970", "July 3, 1993", "March 1, 1967", "February 8, 1945", "March 2, 1987", "December 22, 1981", "March 30, 1981", "October 21, 1967", "October 4, 1976", "August 6, 1974", "November 7, 1953"},
-          {"Landscaping worker", "Banquet manager", "Power lineman", "Pointer", "Tour escort", "Magistrate", "Music instructor", "Police dispatcher", "Medical assistant", "Personnel technician", "Training assistant", "Floor layer", "Public affairs specialist", "Legislator", "Systems software engineer", "Range ecologist", "Telemarketer", "Logistician", "Airport service agent", "Route driver"},
-          {"1993 Dodge Viper", "2005 Fiat Doblo", "2009 Daewoo Lacetti", "2008 Honda Civic", "2011 Alpina B5", "2011 Bentley Continental GTC", "2003 Avanti Sport Convertible", "2002 Toyota FCHV 5", "2001 Ginetta G34", "1997 Dodge Caravan", "2010 Toyota Aygo", "2012 Mercedes-Benz GLK", "1996 Nissan Maxima", "2004 Oldsmobile Silhouette", "2006 Volkswagen Passat", "2004 Peugeot 1007", "2002 Honda Mobilio", "2004 Lincoln Town Car", "1998 Volkswagen Golf", "2006 Suzuki Sea Forenza Wagon", "2006 Volkswagen Passat"},
-          {"130.9 pounds (59.5 kilograms)", "158.8 pounds (72.2 kilograms)", "106.7 pounds (48.5 kilograms)", "139.5 pounds (63.4 kilograms)", "139.5 pounds (63.4 kilograms)", "171.4 pounds (77.9 kilograms)", "182.4 pounds (82.9 kilograms)", "165.2 pounds (75.1 kilograms)", "206.8 pounds (94.0 kilograms)", "196.0 pounds (89.1 kilograms)", "191.6 pounds (87.1 kilograms)", "213.8 pounds (97.2 kilograms)", "193.4 pounds (87.9 kilograms)", "123.6 pounds (56.2 kilograms)", "197.1 pounds (89.6 kilograms)", "148.5 pounds (67.5 kilograms)", "122.5 pounds (55.7 kilograms)", "172.7 pounds (78.5 kilograms)", "175.1 pounds (79.6 kilograms)", "180.8 pounds (82.2 kilograms)"}};
+          {"Sterling B. Rosario", "612-388-9263", "December 30, 1992", "Public affairs specialist", "2011 Bentley Continental GTC", "158.8 pounds (72.2 kilograms)"},
+          {"Amber M. Doss", "276-859-0345", "February 5, 1968", "Tour escort", "2011 Alpina B5", "139.5 pounds (63.4 kilograms)"},
+          {"Erik M. Robinson", "609-546-2522", "July 3, 1993", "Logistician", "2004 Lincoln Town Car", "172.7 pounds (78.5 kilograms)"},
+          {"Eugene L. Johnson", "850-941-3589", "March 2, 1987", "Systems software engineer", "2010 Toyota Aygo", "191.6 pounds (87.1 kilograms)"},
+          {"Audi", "A3", "2017", "Premium Gasoline", "186 hp", "6.0 sec"},
+          {"BMW", "X6", "2016", "Premium Gasoline", "567 hp", "5.2 sec"},
+          {"SAAB", "9-7X", "2009", "Regular Gasoline", "285 hp", "7.2 sec"},
+          {"CADILLAC", "XT5", "2017", "Regular Gasoline", "310 hp", "6.6 sec"},
+          {"Boeing", "737", "85-215 seats", "10204 km", "11300 m", "36 m"},
+          {"Boeing", "787", "210-330 seats", "14800 km", "13100 m", "60.12 m"},
+          {"Airbus", "A380", "544 seats", "15200 km", "13100 m", "80 m"},
+          {"Airbus", "A330", "406 seats", "13450 km", "12500 m", "60.3 m"},
+          {"Oasis of the Seas", "Caribbean", "41.9 km/h", "5400 passengers", "361.6 m", "225,282 GT"},
+          {"Royal Princess", "Various", "40.7 km/h", "3600 passengers", "330 m", "142,714 GT"},
+          {"Carnival Vista", "Caribbean", "43 km/h", "3,936 passengers", "324 m", "133,500 GT"},
+          {"Norwegian Escape", "Various", "43 km/h", "4,266 passengers", "325.9 m", "165,300 GT"},
+          {"Labrador", "United Kingdom & Canada", "25-36 kg", "Black, chocolate, yellow", "12-13 years", "1st (2016)"},
+          {"English Beagle", "England", "9.1-11.3 kg", "Tricolor", "12-15 years", "5th (2016)"},
+          {"British Bulldog", "England", "23-25 kg", "Red, fawn, white, brindle, piebald", "8-10 years", "4th (2016)"},
+          {"Great Dane", "Germany", "50-82 kg", "Fawn, blue, brindle, black", "8-10 years", "14th (2016)"},
+          {"Bitcoin", "XBT", "Digital gold", "21 million" , "2009", "Satoshi Nakamoto"},
+          {"Litecoin", "LTC", "Faster Bitcoin", "84 million" , "2011", "Charlie Lee"},
+          {"Ethereum", "ETH", "Programmable contracts and money", "100 million", "2013", "Vitalik Buterin"},
+          {"Ripple", "XRP", "Enterprise payment settlement network", "100 billion", "2012", "Arthur Britto, David Schwartz, Ryan Fugger"}};
 
     // Prints out an array
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 24; i++) {
       for (int j = 0; j < 6; j++) {
-        System.out.print(arrayWithoutHeader[j][i] + "\t");
+        System.out.print(arrayWithoutHeader[i][j] + "\t");
       }
       System.out.println();
     }
