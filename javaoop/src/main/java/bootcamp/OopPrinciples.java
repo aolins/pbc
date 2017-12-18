@@ -4,7 +4,7 @@ public class OopPrinciples{
 
   public static void main(String[] args){
 
-      // Creates an array with 6 columns and 20 rows
+    // Creates an array with 6 columns and 20 rows
     final String[][] arrayWithHeader = {
       {"PERSON", "Sterling B. Rosario", "612-388-9263", "December 30, 1992", "Public affairs specialist", "2011 Bentley Continental GTC", "158.8 pounds (72.2 kilograms)"},
       {"PERSON", "Amber M. Doss", "276-859-0345", "February 5, 1968", "Tour escort", "2011 Alpina B5", "139.5 pounds (63.4 kilograms)"},
@@ -31,7 +31,7 @@ public class OopPrinciples{
       {"CRYPTOCURRENCY", "Ethereum", "ETH", "Programmable contracts and money", "100 million", "2013", "Vitalik Buterin"},
       {"CRYPTOCURRENCY", "Ripple", "XRP", "Enterprise payment settlement network", "100 billion", "2012", "Arthur Britto, David Schwartz, Ryan Fugger"}};
 
-    //Prints out data by datatype
+    // Prints out data by datatype
     for (int i = 0; i < 24; i++) {
 
       if (arrayWithHeader[i][0].equals("PERSON")) {
