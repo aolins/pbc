@@ -51,22 +51,27 @@ public class Car implements Printable, SpeedSupport {
 
     // Increments the speed of the car by 1 unit.
     public void goFaster() throws Exception {
-        // To manually increese the speed of a car, the clutch pedal must not be pressed
-        this.isClutchPressed = false;
-        // If gear is not 'Reverse' or 'Neutral'
-        if (this.gearNumber > 0) {
-            // Increasing the speed in positive direction (forward)
-            this.speed = this.speed + 1;
-            System.out.println("Increased the speed of a car " + this.brand + " " + this.model);
-        // If gear is 'Reverse'
-        } else if (this.gearNumber == -1) {
-            // Increasing the speed in negative direction (backwards)
-            this.speed = this.speed - 1;
-            System.out.println("Increased the speed of a car " + this.brand + " " + this.model);
-        // If gear is 'Neutral'
-        } else if (this.gearNumber == 0){
-            throw new Exception();
+        try {
+            // To manually increese the speed of a car, the clutch pedal must not be pressed
+            this.isClutchPressed = false;
+            // If gear is not 'Reverse' or 'Neutral'
+            if (this.gearNumber > 0) {
+                // Increasing the speed in positive direction (forward)
+                this.speed = this.speed + 1;
+                System.out.println("Increased the speed of a car " + this.brand + " " + this.model);
+                // If gear is 'Reverse'
+            } else if (this.gearNumber == -1) {
+                // Increasing the speed in negative direction (backwards)
+                this.speed = this.speed - 1;
+                System.out.println("Increased the speed of a car " + this.brand + " " + this.model);
+                // If gear is 'Neutral'
+            } else if (this.gearNumber == 0){
+                throw new Exception();
+            }
+        } finally {
+            this.isClutchPressed = false;
         }
+
     }
 
     // Decrements the speed of the car by 1 unit
@@ -87,6 +92,7 @@ public class Car implements Printable, SpeedSupport {
             this.speed = this.speed + 1;
             System.out.println("Decreased the speed of a car " + this.brand + " " + this.model);
         }
+        this.isClutchPressed = false;
     }
 
     // Shifts the gear of a car.
@@ -97,30 +103,34 @@ public class Car implements Printable, SpeedSupport {
     //     ...
     //     7 - Seventh gear
     public void shiftGear(int gearNumber) throws Exception {
-        // To shift gears of a car, the clutch pedal must be pressed
-        this.isClutchPressed = true;
-        // If provided gear is 'Neautral'
-        if (gearNumber == 0) {
-            this.gearNumber = gearNumber;
-        // If provided gear is 'Reverse'
-        } else if (gearNumber == -1) {
-            // If the car is moving forward - we cannot shift to 'Reverse'
-            if (this.speed > 0) {
-                throw new Exception();
-            } else {
+        try {
+            // To shift gears of a car, the clutch pedal must be pressed
+            this.isClutchPressed = true;
+            // If provided gear is 'Neautral'
+            if (gearNumber == 0) {
                 this.gearNumber = gearNumber;
-            }
-        // If provided gear is 1-7
-        } else if (gearNumber > 0 && gearNumber <= 7) {
-            // If the car is moving backwards - we cannot shift to gear 1-7
-            if (this.speed < 0) {
-                throw new Exception();
+                // If provided gear is 'Reverse'
+            } else if (gearNumber == -1) {
+                // If the car is moving forward - we cannot shift to 'Reverse'
+                if (this.speed > 0) {
+                    throw new Exception();
+                } else {
+                    this.gearNumber = gearNumber;
+                }
+                // If provided gear is 1-7
+            } else if (gearNumber > 0 && gearNumber <= 7) {
+                // If the car is moving backwards - we cannot shift to gear 1-7
+                if (this.speed < 0) {
+                    throw new Exception();
+                } else {
+                    this.gearNumber = gearNumber;
+                }
+                // If provided gear is not in [-1:7]
             } else {
-                this.gearNumber = gearNumber;
+                System.out.println("Provided gear " + gearNumber+ " is not acceptable.");
             }
-        // If provided gear is not in [-1:7]
-        } else {
-            System.out.println("Provided gear " + gearNumber+ " is not acceptable.");
+        } finally {
+            this.isClutchPressed = false;
         }
     }
 

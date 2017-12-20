@@ -59,11 +59,6 @@ public class OopPrinciples {
 
     // (4.1) See the speed
     manualCar.printSpeed();
-    manualCar.isClutchPressed = false;
-    System.out.println("Clutch pedal is released!");
-    manualCar.printSpeed();
-    manualCar.isClutchPressed = true;
-    System.out.println("Clutch pedal is pressed!");
   }
 
   /**
@@ -81,11 +76,6 @@ public class OopPrinciples {
 
     // (6.1) See the speed
     manualCar.printSpeed();
-    manualCar.isClutchPressed = false;
-    System.out.println("Clutch pedal is released!");
-    manualCar.printSpeed();
-    manualCar.isClutchPressed = true;
-    System.out.println("Clutch pedal is pressed!");
 
     // (7) Try to shift to 'Reverse'
     System.out.println("(7) Car is standing. Trying to shift to 'Reverse'.");
@@ -115,8 +105,6 @@ public class OopPrinciples {
     slowDown(manualCar, 0, "Should be able to go slower, clutch pedal is pressed and car is moving backwards.");
 
     // (9.1) See the speed
-    manualCar.isClutchPressed = false;
-    System.out.println("Clutch pedal is released!");
     manualCar.printSpeed();
   }
 
