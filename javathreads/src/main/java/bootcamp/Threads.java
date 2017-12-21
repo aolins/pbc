@@ -7,36 +7,39 @@ import java.util.List;
 
 public class Threads {
 
-    private static int executionNumber;
-
     public static void main(String[] args) {
-
-        //Initialising the executionNumber
-        executionNumber = 0;
-
-        String message = "Execution time of main method: ";
 
         // Check the time at the start of the execution
         long startTime = System.currentTimeMillis();
 
-        System.out.println("Let's run the programm without threads!");
+        System.out.println("Let's list the numbers in one thread!");
 
-        // Calling the procedure 10 times
+        // Calling the procedure in one thread
+        System.out.print("1");
         timeConsuming(3);
+        System.out.println(" - One");
         timeConsuming(3);
+        System.out.print("2");
         timeConsuming(3);
+        System.out.println(" - Two");
         timeConsuming(3);
+        System.out.print("3");
         timeConsuming(3);
+        System.out.println(" - Three");
         timeConsuming(3);
+        System.out.print("4");
         timeConsuming(3);
+        System.out.println(" - Four");
         timeConsuming(3);
+        System.out.print("5");
         timeConsuming(3);
-        timeConsuming(3);
+        System.out.println(" - Five");
 
         // Check the time at the end of the execution
         long stopTime = System.currentTimeMillis();
 
         // Calculate and print the execution time of main method
+        String message = "Execution time of main method: ";
         calculateTime(startTime, stopTime, message);
     }
 
@@ -48,23 +51,14 @@ public class Threads {
 
         while (repetitionCount != 0) {
 
-            // Check the time at the start of the execution
-            long startTime = System.currentTimeMillis();
-
             // Create a list with random Unique IDs
             List<UUID> listOfUniqueIds = new ArrayList<>();
-            for (int i = 0; i < 7000; i++) {
+            for (int i = 0; i < 5000; i++) {
                 listOfUniqueIds.add(UUID.randomUUID());
             }
 
             // Bubble sort the array
             listOfUniqueIds = imperativeBubbleSort(listOfUniqueIds);
-
-            // Check the time at the end of the execution
-            long stopTime = System.currentTimeMillis();
-
-            // Calculate and print the execution time of procedure
-            calculateTime(startTime, stopTime, "Execution time of timeConsuming(): ");
 
             // Decrement repetitionCount
             repetitionCount--;
