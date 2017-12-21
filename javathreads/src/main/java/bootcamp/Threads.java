@@ -49,7 +49,7 @@ public class Threads {
      */
     public static final void timeConsuming(int repetitionCount) {
 
-        while (repetitionCount != 0) {
+        for (int i = 0; i < repetitionCount; i++) {
 
             // Create a list with random Unique IDs
             List<UUID> listOfUniqueIds = new ArrayList<>();
@@ -59,9 +59,6 @@ public class Threads {
 
             // Bubble sort the array
             listOfUniqueIds = imperativeBubbleSort(listOfUniqueIds);
-
-            // Decrement repetitionCount
-            repetitionCount--;
         }
     }
 
