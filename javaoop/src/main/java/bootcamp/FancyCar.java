@@ -11,17 +11,11 @@ public class FancyCar extends Car {
         super(brand, model, year, fuelType, horsepower, accelerationTime);
     }
 
-    // Prints out the speed of the car. If clutch is pressed, the speed is 0
+    // Prints out the speed of the fancy car. If clutch is pressed, the speed is 0
     public void printSpeed() {
-        String message;
-        if (isClutchPressed) {
-            message = "* Fancy Car's " + this.brand + " " + this.model + " current speed is 0 km/h *";
-        } else {
-            message = "* Fancy Car's " + this.brand + " " + this.model + " current speed is " + this.speed + " km/h *";
-        }
-        printFancyFrame(message.length());
-        System.out.println(message);
-        printFancyFrame(message.length());
+        printFancyFrame(50);
+        super.printSpeed();
+        printFancyFrame(50);
     }
 
     // Creates a string of '*' to use for a fancy frame around the message
