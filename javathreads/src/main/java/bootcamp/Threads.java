@@ -16,9 +16,9 @@ public class Threads {
 
         // Calling the procedure in one thread
         System.out.print("1");
-        timeConsuming(3);
+        timeConsuming(1);
         System.out.println(" - One");
-        timeConsuming(3);
+        timeConsuming(1);
         System.out.print("2");
         timeConsuming(3);
         System.out.println(" - Two");
@@ -53,7 +53,7 @@ public class Threads {
 
             // Create a list with random Unique IDs
             List<UUID> listOfUniqueIds = new ArrayList<>();
-            for (int j = 0; i < 5000; j++) {
+            for (int j = 0; j < 5000; j++) {
                 listOfUniqueIds.add(UUID.randomUUID());
             }
 
