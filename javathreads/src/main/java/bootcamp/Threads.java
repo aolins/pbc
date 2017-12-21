@@ -15,25 +15,25 @@ public class Threads {
         System.out.println("Let's list the numbers in one thread!");
 
         // Calling the procedure in one thread
-        System.out.print("1");
+        System.out.println("1");
         timeConsuming(1);
-        System.out.println(" - One");
+        System.out.println("A");
         timeConsuming(1);
-        System.out.print("2");
+        System.out.println("2");
         timeConsuming(3);
-        System.out.println(" - Two");
+        System.out.println("B");
         timeConsuming(3);
-        System.out.print("3");
+        System.out.println("3");
         timeConsuming(3);
-        System.out.println(" - Three");
+        System.out.println("C");
         timeConsuming(3);
-        System.out.print("4");
+        System.out.println("4");
         timeConsuming(3);
-        System.out.println(" - Four");
+        System.out.println("D");
         timeConsuming(3);
-        System.out.print("5");
+        System.out.println("5");
         timeConsuming(3);
-        System.out.println(" - Five");
+        System.out.println("E");
 
         // Check the time at the end of the execution
         long stopTime = System.currentTimeMillis();
