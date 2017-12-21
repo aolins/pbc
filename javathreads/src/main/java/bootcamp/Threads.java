@@ -53,7 +53,7 @@ public class Threads {
 
             // Create a list with random Unique IDs
             List<UUID> listOfUniqueIds = new ArrayList<>();
-            for (int i = 0; i < 5000; i++) {
+            for (int j = 0; i < 5000; j++) {
                 listOfUniqueIds.add(UUID.randomUUID());
             }
 
