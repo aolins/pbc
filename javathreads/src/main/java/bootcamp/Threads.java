@@ -1,76 +1,55 @@
 package bootcamp;
 
 import java.util.UUID;
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Threads {
 
-    private static int number = 0;
+    // Object to indicate the smartphone
+    private static Object smartphone = new Object();
+    // Object to indicate the USB cable used for charging and file transfer
+    private static Object usbCable = new Object();
 
     public static void main(String[] args) {
 
-        // Check the time at the start of the execution
-        long startTime = System.currentTimeMillis();
+        System.out.println("Let's transfer files form smartphone while charging it!");
 
-        System.out.println("Let's calculate the numbers by alternating adding 1 and multiplying by 2!");
-        System.out.println("Initial value of number = " + number);
+        // Creating a first thread with a task to put phone on charging
+        Thread threadOne = new Thread(() -> {
 
-        // Creating a first thread with a task containing only numbers
-        Thread threadOne = new Thread(() ->{
-            timeConsuming(1);
-            number = number + 1;
-            timeConsuming(5);
-            number = number + 1;
-            timeConsuming(3);
-            number = number + 1;
-            timeConsuming(3);
-            number = number + 1;
-            timeConsuming(3);
-            number = number + 1;
+            synchronized (smartphone) {
+                System.out.println("Thread One: Holding the smartphone...");
 
-            // Check the time at the end of the execution of the first thread
-            long stopTime = System.currentTimeMillis();
+                timeConsuming(3);
 
-            // Calculate and print the execution time of the first thread
-            String message = "Execution time of the first thread: ";
-            calculateTime(startTime, stopTime, message);
+                System.out.println("Thread One: Waiting for USB cable to be available for charging...");
+
+                synchronized (usbCable) {
+                    System.out.println("Thread One: Holding smartphone and USB cable...");
+                }
+            }
         });
 
-        // Creating a second thread with a task containing only letters
+        // Creating a second thread with a task to transfer files from smartphone
         Thread threadTwo = new Thread(() ->{
-            timeConsuming(3);
-            number = number * 2;
-            timeConsuming(2);
-            number = number * 2;
-            timeConsuming(3);
-            number = number * 2;
-            timeConsuming(4);
-            number = number * 2;
-            timeConsuming(3);
-            number = number * 2;
 
-            // Check the time at the end of the execution of the second thread
-            long stopTime = System.currentTimeMillis();
+            synchronized (usbCable) {
+                System.out.println("Thread Two: Holding USB cable...");
 
-            // Calculate and print the execution time of the second thread
-            String message = "Execution time of the second thread: ";
-            calculateTime(startTime, stopTime, message);
+                timeConsuming(3);
+
+                System.out.println("Thread Two: Waiting for smartphone to be available for file transfer...");
+
+                synchronized (smartphone) {
+                    System.out.println("Thread Two: Holding smartphone and USB cable...");
+                }
+            }
         });
 
-        try {
-            // Running tasks on seperate threads
-            threadOne.start();
-            threadTwo.start();
-
-            // Wait until threads finish executing
-            threadOne.join();
-            threadTwo.join();
-        } catch (Exception e) {}
-
-        // Print out result
-        System.out.println("Expected number = 62. Actual number = " + number);
+        // Running tasks on seperate threads
+        threadOne.start();
+        threadTwo.start();
     }
 
     /**
@@ -113,20 +92,5 @@ public class Threads {
             }
         }
         return list;
-    }
-
-    /**
-     * Calculates, formats and prints out the time of the execution.
-     * @param startTime - start time of execution
-     * @param stopTime - end time of execution
-     */
-    public static final void calculateTime(final long startTime, final long stopTime, final String message) {
-        // Calculate the time of the execution
-        long elapsedTime = stopTime - startTime;
-        long second = (elapsedTime / 1000) % 60;
-        // Prepare the message
-        String time = String.format(message + "%02d seconds.", second);
-        // Print out the message
-        System.out.println(time);
     }
 }
