@@ -14,8 +14,8 @@ public class Threads {
 
         System.out.println("Let's list the numbers and letters in two threads!");
 
-        // Creating a task for the first thread - only numbers
-        Runnable taskForThreadOne = () -> {
+        // Creating a first thread with a task containing only numbers
+        Thread threadOne = new Thread(() ->{
             timeConsuming(3);
             System.out.println("1");
             timeConsuming(5);
@@ -33,10 +33,10 @@ public class Threads {
             // Calculate and print the execution time of the first thread
             String message = "Execution time of the first thread: ";
             calculateTime(startTime, stopTime, message);
-        };
+            });
 
-        // Creating a task for the second thread - only letters
-        Runnable taskForThreadTwo = () -> {
+        // Creating a second thread with a task containing only letters
+        Thread threadTwo = new Thread(() ->{
             timeConsuming(3);
             System.out.println("A");
             timeConsuming(2);
@@ -54,11 +54,7 @@ public class Threads {
             // Calculate and print the execution time of the second thread
             String message = "Execution time of the second thread: ";
             calculateTime(startTime, stopTime, message);
-        };
-
-        // Creating threads
-        Thread threadOne = new Thread(taskForThreadOne);
-        Thread threadTwo = new Thread(taskForThreadTwo);
+            });
 
         // Running tasks on seperate threads
         threadOne.start();
