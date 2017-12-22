@@ -4,57 +4,93 @@ import java.util.UUID;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Threads {
 
-    private static String[] arrayOfNumbers = {"1", "2", "3", "4", "5"};
-    private static String[] arrayOfLetters = {"A", "B", "C", "D", "E"};
+    private static int number = 2;
 
     public static void main(String[] args) {
 
-        System.out.println("Let's list random mixed numbers and letters in two threads!");
+        // Check the time at the start of the execution
+        long startTime = System.currentTimeMillis();
 
-        // Random number picker
-        Random rand = new Random();
+        System.out.println("Let's calculate the numbers by alternating adding 2 and multiplying by 2!");
+        System.out.println("Initial value of number = " + number);
 
         // Creating a first thread with a task containing only numbers
-        Thread threadOne = new Thread(() -> {
+        Thread threadOne = new Thread(() ->{
+            timeConsuming(1);
+            add(2);
+            timeConsuming(5);
+            add(2);
+            timeConsuming(3);
+            add(2);
+            timeConsuming(3);
+            add(2);
+            timeConsuming(3);
+            add(2);
 
-            synchronized (arrayOfNumbers) {
-                System.out.println("Thread One: Holding arrayOfNumbers...");
+            // Check the time at the end of the execution of the first thread
+            long stopTime = System.currentTimeMillis();
 
-                timeConsuming(3);
-                System.out.println("Random number from arrayOfNumbers: " + arrayOfNumbers[rand.nextInt(5)]);
-
-                System.out.println("Thread One: Waiting for arrayOfLetters...");
-
-                synchronized (arrayOfLetters) {
-                    System.out.println("Thread One: Holding arrayOfNumbers & arrayOfLetters...");
-                }
-            }
+            // Calculate and print the execution time of the first thread
+            String message = "Execution time of the first thread: ";
+            calculateTime(startTime, stopTime, message);
         });
 
         // Creating a second thread with a task containing only letters
         Thread threadTwo = new Thread(() ->{
+            timeConsuming(3);
+            multiply(2);
+            timeConsuming(2);
+            multiply(2);
+            timeConsuming(3);
+            multiply(2);
+            timeConsuming(4);
+            multiply(2);
+            timeConsuming(3);
+            multiply(2);
 
-            synchronized (arrayOfLetters) {
-                System.out.println("Thread Two: Holding arrayOfLetters...");
+            // Check the time at the end of the execution of the second thread
+            long stopTime = System.currentTimeMillis();
 
-                timeConsuming(3);
-                System.out.println("Random letter from arrayOfLetters: " + arrayOfLetters[rand.nextInt(5)]);
-
-                System.out.println("Thread Two: Waiting for arrayOfNumbers...");
-
-                synchronized (arrayOfNumbers) {
-                    System.out.println("Thread Two: Holding arrayOfNumbers & arrayOfLetters...");
-                }
-            }
+            // Calculate and print the execution time of the second thread
+            String message = "Execution time of the second thread: ";
+            calculateTime(startTime, stopTime, message);
         });
 
-        // Running tasks on seperate threads
-        threadOne.start();
-        threadTwo.start();
+        try {
+            // Running tasks on seperate threads
+            threadOne.start();
+            threadTwo.start();
+
+            // Wait until threads finish executing
+            threadOne.join();
+            threadTwo.join();
+        } catch (Exception e) {}
+
+        // Print out result
+        System.out.println("Expected number = 188. Actual number = " + number);
+    }
+
+    /**
+     * Method that increments number by given addend
+     * @param number to alter
+     */
+    public static void add(int addend) {
+        System.out.print(number);
+        number += addend;
+        System.out.println(" + " + addend + " = " + number);
+    }
+
+    /**
+     * Method that multiplies number by given multiplier
+     * @param number to alter
+     */
+    public static void multiply(int multiplier) {
+        System.out.print(number);
+        number *= multiplier;
+        System.out.println(" * " + multiplier + " = " + number);
     }
 
     /**
@@ -97,5 +133,20 @@ public class Threads {
             }
         }
         return list;
+    }
+
+    /**
+     * Calculates, formats and prints out the time of the execution.
+     * @param startTime - start time of execution
+     * @param stopTime - end time of execution
+     */
+    public static final void calculateTime(final long startTime, final long stopTime, final String message) {
+        // Calculate the time of the execution
+        long elapsedTime = stopTime - startTime;
+        long second = (elapsedTime / 1000) % 60;
+        // Prepare the message
+        String time = String.format(message + "%02d seconds.", second);
+        // Print out the message
+        System.out.println(time);
     }
 }
