@@ -4,57 +4,53 @@ import java.util.UUID;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Threads {
 
+    private static String[] arrayOfNumbers = {"1", "2", "3", "4", "5"};
+    private static String[] arrayOfLetters = {"A", "B", "C", "D", "E"};
+
     public static void main(String[] args) {
 
-        // Check the time at the start of the execution
-        long startTime = System.currentTimeMillis();
+        System.out.println("Let's list random mixed numbers and letters in two threads!");
 
-        System.out.println("Let's list the numbers and letters in two threads!");
+        // Random number picker
+        Random rand = new Random();
 
         // Creating a first thread with a task containing only numbers
-        Thread threadOne = new Thread(() ->{
-            timeConsuming(3);
-            System.out.println("1");
-            timeConsuming(5);
-            System.out.println("2");
-            timeConsuming(3);
-            System.out.println("3");
-            timeConsuming(3);
-            System.out.println("4");
-            timeConsuming(3);
-            System.out.println("5");
+        Thread threadOne = new Thread(() -> {
 
-            // Check the time at the end of the execution of the first thread
-            long stopTime = System.currentTimeMillis();
+            synchronized (arrayOfNumbers) {
+                System.out.println("Thread One: Holding arrayOfNumbers...");
 
-            // Calculate and print the execution time of the first thread
-            String message = "Execution time of the first thread: ";
-            calculateTime(startTime, stopTime, message);
-            });
+                timeConsuming(3);
+                System.out.println("Random number from arrayOfNumbers: " + arrayOfNumbers[rand.nextInt(5)]);
+
+                System.out.println("Thread One: Waiting for arrayOfLetters...");
+
+                synchronized (arrayOfLetters) {
+                    System.out.println("Thread One: Holding arrayOfNumbers & arrayOfLetters...");
+                }
+            }
+        });
 
         // Creating a second thread with a task containing only letters
         Thread threadTwo = new Thread(() ->{
-            timeConsuming(3);
-            System.out.println("A");
-            timeConsuming(2);
-            System.out.println("B");
-            timeConsuming(3);
-            System.out.println("C");
-            timeConsuming(4);
-            System.out.println("D");
-            timeConsuming(3);
-            System.out.println("E");
 
-            // Check the time at the end of the execution of the second thread
-            long stopTime = System.currentTimeMillis();
+            synchronized (arrayOfLetters) {
+                System.out.println("Thread Two: Holding arrayOfLetters...");
 
-            // Calculate and print the execution time of the second thread
-            String message = "Execution time of the second thread: ";
-            calculateTime(startTime, stopTime, message);
-            });
+                timeConsuming(3);
+                System.out.println("Random letter from arrayOfLetters: " + arrayOfLetters[rand.nextInt(5)]);
+
+                System.out.println("Thread Two: Waiting for arrayOfNumbers...");
+
+                synchronized (arrayOfNumbers) {
+                    System.out.println("Thread Two: Holding arrayOfNumbers & arrayOfLetters...");
+                }
+            }
+        });
 
         // Running tasks on seperate threads
         threadOne.start();
@@ -101,20 +97,5 @@ public class Threads {
             }
         }
         return list;
-    }
-
-    /**
-     * Calculates, formats and prints out the time of the execution.
-     * @param startTime - start time of execution
-     * @param stopTime - end time of execution
-     */
-    public static final void calculateTime(final long startTime, final long stopTime, final String message) {
-        // Calculate the time of the execution
-        long elapsedTime = stopTime - startTime;
-        long second = (elapsedTime / 1000) % 60;
-        // Prepare the message
-        String time = String.format(message + "%02d seconds.", second);
-        // Print out the message
-        System.out.println(time);
     }
 }
