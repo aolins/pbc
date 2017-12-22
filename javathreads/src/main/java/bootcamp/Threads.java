@@ -20,15 +20,15 @@ public class Threads {
         // Creating a first thread with a task containing only numbers
         Thread threadOne = new Thread(() ->{
             timeConsuming(1);
-            System.out.println(number + " + 1 = " + (number = number + 1));
+            number = number + 1;
             timeConsuming(5);
-            System.out.println(number + " + 1 = " + (number = number + 1));
+            number = number + 1;
             timeConsuming(3);
-            System.out.println(number + " + 1 = " + (number = number + 1));
+            number = number + 1;
             timeConsuming(3);
-            System.out.println(number + " + 1 = " + (number = number + 1));
+            number = number + 1;
             timeConsuming(3);
-            System.out.println(number + " + 1 = " + (number = number + 1));
+            number = number + 1;
 
             // Check the time at the end of the execution of the first thread
             long stopTime = System.currentTimeMillis();
@@ -41,15 +41,15 @@ public class Threads {
         // Creating a second thread with a task containing only letters
         Thread threadTwo = new Thread(() ->{
             timeConsuming(3);
-            System.out.println(number + " * 2 = " + (number = number * 2));
+            number = number * 2;
             timeConsuming(2);
-            System.out.println(number + " * 2 = " + (number = number * 2));
+            number = number * 2;
             timeConsuming(3);
-            System.out.println(number + " * 2 = " + (number = number * 2));
+            number = number * 2;
             timeConsuming(4);
-            System.out.println(number + " * 2 = " + (number = number * 2));
+            number = number * 2;
             timeConsuming(3);
-            System.out.println(number + " * 2 = " + (number = number * 2));
+            number = number * 2;
 
             // Check the time at the end of the execution of the second thread
             long stopTime = System.currentTimeMillis();
