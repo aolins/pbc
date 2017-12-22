@@ -12,35 +12,53 @@ public class Threads {
         // Check the time at the start of the execution
         long startTime = System.currentTimeMillis();
 
-        System.out.println("Let's list the numbers in one thread!");
+        System.out.println("Let's list the numbers and letters in two threads!");
 
-        // Calling the procedure in one thread
-        System.out.println("1");
-        timeConsuming(3);
-        System.out.println("A");
-        timeConsuming(3);
-        System.out.println("2");
-        timeConsuming(3);
-        System.out.println("B");
-        timeConsuming(3);
-        System.out.println("3");
-        timeConsuming(3);
-        System.out.println("C");
-        timeConsuming(3);
-        System.out.println("4");
-        timeConsuming(3);
-        System.out.println("D");
-        timeConsuming(3);
-        System.out.println("5");
-        timeConsuming(3);
-        System.out.println("E");
+        // Creating a first thread with a task containing only numbers
+        Thread threadOne = new Thread(() ->{
+            timeConsuming(3);
+            System.out.println("1");
+            timeConsuming(5);
+            System.out.println("2");
+            timeConsuming(3);
+            System.out.println("3");
+            timeConsuming(3);
+            System.out.println("4");
+            timeConsuming(3);
+            System.out.println("5");
 
-        // Check the time at the end of the execution
-        long stopTime = System.currentTimeMillis();
+            // Check the time at the end of the execution of the first thread
+            long stopTime = System.currentTimeMillis();
 
-        // Calculate and print the execution time of main method
-        String message = "Execution time of main method: ";
-        calculateTime(startTime, stopTime, message);
+            // Calculate and print the execution time of the first thread
+            String message = "Execution time of the first thread: ";
+            calculateTime(startTime, stopTime, message);
+            });
+
+        // Creating a second thread with a task containing only letters
+        Thread threadTwo = new Thread(() ->{
+            timeConsuming(3);
+            System.out.println("A");
+            timeConsuming(2);
+            System.out.println("B");
+            timeConsuming(3);
+            System.out.println("C");
+            timeConsuming(4);
+            System.out.println("D");
+            timeConsuming(3);
+            System.out.println("E");
+
+            // Check the time at the end of the execution of the second thread
+            long stopTime = System.currentTimeMillis();
+
+            // Calculate and print the execution time of the second thread
+            String message = "Execution time of the second thread: ";
+            calculateTime(startTime, stopTime, message);
+            });
+
+        // Running tasks on seperate threads
+        threadOne.start();
+        threadTwo.start();
     }
 
     /**
