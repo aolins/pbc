@@ -7,28 +7,28 @@ import java.util.List;
 
 public class Threads {
 
-    private static int number = 2;
+    private static int number = 0;
 
     public static void main(String[] args) {
 
         // Check the time at the start of the execution
         long startTime = System.currentTimeMillis();
 
-        System.out.println("Let's calculate the numbers by alternating adding 2 and multiplying by 2!");
+        System.out.println("Let's calculate the numbers by alternating adding 1 and multiplying by 2!");
         System.out.println("Initial value of number = " + number);
 
         // Creating a first thread with a task containing only numbers
         Thread threadOne = new Thread(() ->{
             timeConsuming(1);
-            add(2);
+            System.out.println(number + " + 1 = " + (number = number + 1));
             timeConsuming(5);
-            add(2);
+            System.out.println(number + " + 1 = " + (number = number + 1));
             timeConsuming(3);
-            add(2);
+            System.out.println(number + " + 1 = " + (number = number + 1));
             timeConsuming(3);
-            add(2);
+            System.out.println(number + " + 1 = " + (number = number + 1));
             timeConsuming(3);
-            add(2);
+            System.out.println(number + " + 1 = " + (number = number + 1));
 
             // Check the time at the end of the execution of the first thread
             long stopTime = System.currentTimeMillis();
@@ -41,15 +41,15 @@ public class Threads {
         // Creating a second thread with a task containing only letters
         Thread threadTwo = new Thread(() ->{
             timeConsuming(3);
-            multiply(2);
+            System.out.println(number + " * 2 = " + (number = number * 2));
             timeConsuming(2);
-            multiply(2);
+            System.out.println(number + " * 2 = " + (number = number * 2));
             timeConsuming(3);
-            multiply(2);
+            System.out.println(number + " * 2 = " + (number = number * 2));
             timeConsuming(4);
-            multiply(2);
+            System.out.println(number + " * 2 = " + (number = number * 2));
             timeConsuming(3);
-            multiply(2);
+            System.out.println(number + " * 2 = " + (number = number * 2));
 
             // Check the time at the end of the execution of the second thread
             long stopTime = System.currentTimeMillis();
@@ -70,27 +70,7 @@ public class Threads {
         } catch (Exception e) {}
 
         // Print out result
-        System.out.println("Expected number = 188. Actual number = " + number);
-    }
-
-    /**
-     * Method that increments number by given addend
-     * @param number to alter
-     */
-    public static void add(int addend) {
-        System.out.print(number);
-        number += addend;
-        System.out.println(" + " + addend + " = " + number);
-    }
-
-    /**
-     * Method that multiplies number by given multiplier
-     * @param number to alter
-     */
-    public static void multiply(int multiplier) {
-        System.out.print(number);
-        number *= multiplier;
-        System.out.println(" * " + multiplier + " = " + number);
+        System.out.println("Expected number = 62. Actual number = " + number);
     }
 
     /**
