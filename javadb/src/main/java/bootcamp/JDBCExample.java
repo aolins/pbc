@@ -165,7 +165,7 @@ public class JDBCExample {
         System.out.println("Executing 'SELECT * FROM people'. Result: ");
 
         // If SELECT returns nothing, inform about it
-        if(!result.isBeforeFirst()) {
+        if (!result.isBeforeFirst()) {
             System.out.println("No data was return during this SELECT!");
         }
 
@@ -236,7 +236,7 @@ public class JDBCExample {
         int rowsDeleted = statement.executeUpdate();
         if (rowsDeleted > 0) {
             System.out.println("An entry was deleted successfully!");
-        }else {
+        } else {
             System.out.println("Failure while deleting an entry!");
         }
     }
