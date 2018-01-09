@@ -33,9 +33,6 @@ public class JDBCExample {
         // Specify the URL to database for MySQL
         String dbURL = "jdbc:mysql://localhost:PORT/DATABASE_NAME?useSSL=false";
 
-        // Specify the URL to database for PostgreSQL
-        // String dbURL = "jdbc:postgresql://localhost:PORT/DATABASE_NAME?useSSL=false";
-
         // Specify the user and password to connect to database
         String username = "USERNAME";
         String password = "PASSWORD";
@@ -43,9 +40,6 @@ public class JDBCExample {
         try {
             // Load and register JDBC driver for MySQL
             Class.forName("com.mysql.jdbc.Driver");
-
-            // Load and register JDBC driver for PostgreSQL
-            // Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
             // ClassNotFoundException is thrown if driver is not properly loaded
             e.printStackTrace();
