@@ -9,16 +9,15 @@ import java.sql.ResultSet;
 import java.io.Console;
 
 /**
- *  JDBCExample works with a database, which contains a table created by script below:
+ *  JDBCExample works with a database, which contains a table created by script below (beware of unneeded '*' if using copy-paste):
  *
  *  CREATE TABLE people (
  *    fullname varchar (45) NOT NULL,
  *    occupation varchar (45) NOT NULL,
  *    vehicle varchar (45) NOT NULL,
  *    weight decimal (6,3) NOT NULL,
- *    updated_last date NOT NULL,
  *    PRIMARY KEY (fullname)
- *    );
+ *  );
  *
  *  Placeholders that need to be replaced:
  *  DATABASE_NAME - name of the database needed to be connect with,
@@ -218,11 +217,7 @@ public class JDBCExample {
     public static void insert(Connection connection, String fullname, String occupation, String vehicle, float weight) {
         try {
             // String that includes insert SQL script with '?' placeholders which will be replaced by PreparedStatement methods
-            String sql = "INSERT INTO people (fullname, occupation, vehicle, weight, updated_last) VALUES (?, ?, ?, ?, ?)";
-
-            // Create a SQL date using java.util.date
-            java.util.Date utilDate = new java.util.Date();
-            java.sql.Date updatedLast = new java.sql.Date(utilDate.getTime());
+            String sql = "INSERT INTO people (fullname, occupation, vehicle, weight) VALUES (?, ?, ?, ?)";
 
             // Prepare the SQL script, replacing all '?' placeholders
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -230,7 +225,6 @@ public class JDBCExample {
             statement.setString(2, occupation);
             statement.setString(3, vehicle);
             statement.setFloat(4, weight);
-            statement.setDate(5, updatedLast);
 
             // executeUpdate() returns the number of rows affected by the script. 1 row for each updated entry is expected
             int rowsInserted = statement.executeUpdate();
@@ -274,12 +268,11 @@ public class JDBCExample {
                 String occupation = result.getString(2);
                 String vehicle = result.getString("vehicle");
                 float weight = result.getFloat("weight");
-                java.sql.Date updatedLast = result.getDate("updated_last");
 
                 // Prepare the String with placeholders '%d' for numeric value and '%s' for a String value
-                String output = " - Person #%d (Updated last on %s): %s - %s - %s - %s";
+                String output = " - Person #%d: %s - %s - %s - %s";
                 // Format the String 'output', replacing placeholders with values
-                System.out.println(String.format(output, ++count, updatedLast, fullname, occupation, vehicle, weight));
+                System.out.println(String.format(output, ++count, fullname, occupation, vehicle, weight));
             }
         } catch (SQLException ex) {
             System.out.println(" ! Exception: " + ex.getMessage());
@@ -289,7 +282,7 @@ public class JDBCExample {
     /**
      * Updates entry of table 'people' selecting by fullname
      * @param connection - session with database
-     * @param name - name of the person, which entry must be updated
+     * @param full - name of the person, which entry must be updated
      * @param occupation - occupation of the person
      * @param vehicle - vehicle of the person
      * @param weight - weight of the person in kg
@@ -298,19 +291,14 @@ public class JDBCExample {
     public static void update(Connection connection, String fullname, String occupation, String vehicle, float weight) {
         try {
             // String that includes update SQL script with '?' placeholders which will be replaced by PreparedStatement methods
-            String sql = "UPDATE people SET occupation=?, vehicle=?, weight=?, updated_last=? WHERE fullname=?";
-
-            // Create a SQL date using java.util.date
-            java.util.Date utilDate = new java.util.Date();
-            java.sql.Date updatedLast = new java.sql.Date(utilDate.getTime());
+            String sql = "UPDATE people SET occupation=?, vehicle=?, weight=? WHERE fullname=?";
 
             // Prepare the SQL script, replacing all '?' placeholders
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, occupation);
             statement.setString(2, vehicle);
             statement.setFloat(3, weight);
-            statement.setDate(4, updatedLast);
-            statement.setString(5, fullname);
+            statement.setString(4, fullname);
 
             // executeUpdate() returns the number of rows affected by the script. 1 row for each updated entry is expected
             int rowsUpdated = statement.executeUpdate();
