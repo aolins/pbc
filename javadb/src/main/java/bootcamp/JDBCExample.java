@@ -30,11 +30,11 @@ public class JDBCExample {
     public static void main(String[] args){
 
         // Specify the URL to database for MySQL
-        String dbURL = "jdbc:mysql://localhost:3306/jdbcexampledb?useSSL=false";
+        String dbURL = "jdbc:mysql://localhost:PORT/DATABASE_NAME?useSSL=false";
 
         // Specify the user and password to connect to database
-        String username = "root";
-        String password = "12345";
+        String username = "USERNAME";
+        String password = "PASSWORD";
 
         try {
             // Load and register JDBC driver for MySQL
