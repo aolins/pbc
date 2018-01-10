@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.io.Console;
 
 /**
- *  JDBCExample works with a database, which contains a table created by script below (beware of unneeded '*' if using copy-paste):
+ *  JDBCExample works with a database, which contains a tables created by script below (beware of unneeded '*' if using copy-paste):
  *
  *  CREATE TABLE people (
  *    fullname varchar (45) NOT NULL,
@@ -17,6 +17,11 @@ import java.io.Console;
  *    vehicle varchar (45) NOT NULL,
  *    weight decimal (6,3) NOT NULL,
  *    PRIMARY KEY (fullname)
+ *  );
+ *
+ *  CREATE TABLE action_log (
+ *    actionType varchar (45) NOT NULL,
+ *    updated_last date NOT NULL
  *  );
  *
  *  Placeholders that need to be replaced:
@@ -234,6 +239,9 @@ public class JDBCExample {
                 System.out.println(" * Failure during an insert of an entry!");
             }
 
+            // Log the choosen action
+            logAction(connection,"Insert");
+
         } catch (SQLException ex) {
                 System.out.println(" ! Exception: " + ex.getMessage());
         }
@@ -274,6 +282,10 @@ public class JDBCExample {
                 // Format the String 'output', replacing placeholders with values
                 System.out.println(String.format(output, ++count, fullname, occupation, vehicle, weight));
             }
+
+            // Log the choosen action
+            logAction(connection,"Select");
+
         } catch (SQLException ex) {
             System.out.println(" ! Exception: " + ex.getMessage());
         }
@@ -307,6 +319,10 @@ public class JDBCExample {
             } else {
                 System.out.println(" * No entry to update!");
             }
+
+            // Log the choosen action
+            logAction(connection,"Update");
+
         } catch (SQLException ex) {
             System.out.println(" ! Exception: " + ex.getMessage());
         }
@@ -334,6 +350,35 @@ public class JDBCExample {
             } else {
                 System.out.println(" * No entry to delete!");
             }
+
+            // Log the choosen action
+            logAction(connection,"Delete");
+
+        } catch (SQLException ex) {
+            System.out.println(" ! Exception: " + ex.getMessage());
+        }
+    }
+
+    /**
+     * Adding log of action to action_log table
+     * @param action - action needed to be logged
+     */
+    public static void logAction(Connection connection, String action) {
+        try {
+            // String that includes insert SQL script with '?' placeholders which will be replaced by PreparedStatement methods
+            String sql = "INSERT INTO action_log (action_type, date_of_action) VALUES (?, ?)";
+
+            // Create a SQL date using java.util.date
+            java.util.Date utilDate = new java.util.Date();
+            java.sql.Date dateOfAction = new java.sql.Date(utilDate.getTime());
+
+            // Prepare the SQL script, replacing all '?' placeholders
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, action);
+            statement.setDate(2, dateOfAction);
+
+            // executeUpdate() returns the number of rows affected by the script. 1 row for each updated entry is expected
+            int rowsInserted = statement.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(" ! Exception: " + ex.getMessage());
         }
