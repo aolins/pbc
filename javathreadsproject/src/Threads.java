@@ -3,27 +3,30 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
-    public class Threads {
+public class Threads {
+
+    private static int number = 0;
 
     public static void main(String[] args) {
 
         // Check the time at the start of the execution
         long startTime = System.currentTimeMillis();
 
-        System.out.println("Let's list the numbers and letters in two threads!");
+        System.out.println("Let's calculate the numbers by alternating adding 1 and multiplying by 2!");
+        System.out.println("Initial value of number = " + number);
 
         // Creating a first thread with a task containing only numbers
         Thread threadOne = new Thread(() ->{
-            timeConsuming(3);
-            System.out.println("1");
+            timeConsuming(1);
+            number = number + 1;
             timeConsuming(5);
-            System.out.println("2");
+            number = number + 1;
             timeConsuming(3);
-            System.out.println("3");
+            number = number + 1;
             timeConsuming(3);
-            System.out.println("4");
+            number = number + 1;
             timeConsuming(3);
-            System.out.println("5");
+            number = number + 1;
 
             // Check the time at the end of the execution of the first thread
             long stopTime = System.currentTimeMillis();
@@ -36,15 +39,15 @@ import java.util.List;
         // Creating a second thread with a task containing only letters
         Thread threadTwo = new Thread(() ->{
             timeConsuming(3);
-            System.out.println("A");
+            number = number * 2;
             timeConsuming(2);
-            System.out.println("B");
+            number = number * 2;
             timeConsuming(3);
-            System.out.println("C");
+            number = number * 2;
             timeConsuming(4);
-            System.out.println("D");
+            number = number * 2;
             timeConsuming(3);
-            System.out.println("E");
+            number = number * 2;
 
             // Check the time at the end of the execution of the second thread
             long stopTime = System.currentTimeMillis();
@@ -54,9 +57,18 @@ import java.util.List;
             calculateTime(startTime, stopTime, message);
         });
 
-        // Running tasks on seperate threads
-        threadOne.start();
-        threadTwo.start();
+        try {
+            // Running tasks on seperate threads
+            threadOne.start();
+            threadTwo.start();
+
+            // Wait until threads finish executing
+            threadOne.join();
+            threadTwo.join();
+        } catch (Exception e) {}
+
+        // Print out result
+        System.out.println("Expected number = 62. Actual number = " + number);
     }
 
     /**
