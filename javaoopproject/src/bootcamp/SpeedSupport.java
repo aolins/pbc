@@ -2,9 +2,9 @@ package bootcamp;
 
 public interface SpeedSupport {
 
-    void goFaster();
+    void goFaster() throws Exception ;
 
-    void goSlower();
+    void goSlower() throws Exception ;
 
     void printSpeed();
 }
