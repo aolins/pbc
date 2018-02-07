@@ -4,39 +4,74 @@ public class OopPrinciples{
 
   public static void main(String[] args){
 
-      // Creates an array with 6 columns and 20 rows
-      final String[][] arrayWithoutHeader = {
-          {"Sterling B. Rosario", "612-388-9263", "December 30, 1992", "Public affairs specialist", "2011 Bentley Continental GTC", "158.8 pounds (72.2 kilograms)"},
-          {"Amber M. Doss", "276-859-0345", "February 5, 1968", "Tour escort", "2011 Alpina B5", "139.5 pounds (63.4 kilograms)"},
-          {"Erik M. Robinson", "609-546-2522", "July 3, 1993", "Logistician", "2004 Lincoln Town Car", "172.7 pounds (78.5 kilograms)"},
-          {"Eugene L. Johnson", "850-941-3589", "March 2, 1987", "Systems software engineer", "2010 Toyota Aygo", "191.6 pounds (87.1 kilograms)"},
-          {"Audi", "A3", "2017", "Premium Gasoline", "186 hp", "6.0 sec"},
-          {"BMW", "X6", "2016", "Premium Gasoline", "567 hp", "5.2 sec"},
-          {"SAAB", "9-7X", "2009", "Regular Gasoline", "285 hp", "7.2 sec"},
-          {"CADILLAC", "XT5", "2017", "Regular Gasoline", "310 hp", "6.6 sec"},
-          {"Boeing", "737", "85-215 seats", "10204 km", "11300 m", "36 m"},
-          {"Boeing", "787", "210-330 seats", "14800 km", "13100 m", "60.12 m"},
-          {"Airbus", "A380", "544 seats", "15200 km", "13100 m", "80 m"},
-          {"Airbus", "A330", "406 seats", "13450 km", "12500 m", "60.3 m"},
-          {"Oasis of the Seas", "Caribbean", "41.9 km/h", "5400 passengers", "361.6 m", "225,282 GT"},
-          {"Royal Princess", "Various", "40.7 km/h", "3600 passengers", "330 m", "142,714 GT"},
-          {"Carnival Vista", "Caribbean", "43 km/h", "3,936 passengers", "324 m", "133,500 GT"},
-          {"Norwegian Escape", "Various", "43 km/h", "4,266 passengers", "325.9 m", "165,300 GT"},
-          {"Labrador", "United Kingdom & Canada", "25-36 kg", "Black, chocolate, yellow", "12-13 years", "1st (2016)"},
-          {"English Beagle", "England", "9.1-11.3 kg", "Tricolor", "12-15 years", "5th (2016)"},
-          {"British Bulldog", "England", "23-25 kg", "Red, fawn, white, brindle, piebald", "8-10 years", "4th (2016)"},
-          {"Great Dane", "Germany", "50-82 kg", "Fawn, blue, brindle, black", "8-10 years", "14th (2016)"},
-          {"Bitcoin", "XBT", "Digital gold", "21 million" , "2009", "Satoshi Nakamoto"},
-          {"Litecoin", "LTC", "Faster Bitcoin", "84 million" , "2011", "Charlie Lee"},
-          {"Ethereum", "ETH", "Programmable contracts and money", "100 million", "2013", "Vitalik Buterin"},
-          {"Ripple", "XRP", "Enterprise payment settlement network", "100 billion", "2012", "Arthur Britto, David Schwartz, Ryan Fugger"}};
+    // Creates an array with 6 columns and 24 rows
+    final String[][] arrayWithHeader = {
+      {"PERSON", "Sterling B. Rosario", "612-388-9263", "December 30, 1992", "Public affairs specialist", "2011 Bentley Continental GTC", "158.8 pounds (72.2 kilograms)"},
+      {"PERSON", "Amber M. Doss", "276-859-0345", "February 5, 1968", "Tour escort", "2011 Alpina B5", "139.5 pounds (63.4 kilograms)"},
+      {"PERSON", "Erik M. Robinson", "609-546-2522", "July 3, 1993", "Logistician", "2004 Lincoln Town Car", "172.7 pounds (78.5 kilograms)"},
+      {"PERSON", "Eugene L. Johnson", "850-941-3589", "March 2, 1987", "Systems software engineer", "2010 Toyota Aygo", "191.6 pounds (87.1 kilograms)"},
+      {"CAR", "Audi", "A3", "2017", "Premium Gasoline", "186 hp", "6.0 sec"},
+      {"CAR", "BMW", "X6", "2016", "Premium Gasoline", "567 hp", "5.2 sec"},
+      {"CAR", "SAAB", "9-7X", "2009", "Regular Gasoline", "285 hp", "7.2 sec"},
+      {"CAR", "CADILLAC", "XT5", "2017", "Regular Gasoline", "310 hp", "6.6 sec"},
+      {"PLANE", "Boeing", "737", "85-215 seats", "10204 km", "1966–present", "36 m"},
+      {"PLANE", "Boeing", "787", "210-330 seats", "14800 km", "2007–present", "60.12 m"},
+      {"PLANE", "Airbus", "A380", "544 seats", "15200 km", "2005–present", "80 m"},
+      {"PLANE", "Airbus", "A330", "406 seats", "13450 km", "1992–present", "60.3 m"},
+      {"SHIP", "Oasis of the Seas", "Caribbean", "41.9 km/h", "5400 passengers", "361.6 m", "225,282 GT"},
+      {"SHIP", "Royal Princess", "Various", "40.7 km/h", "3600 passengers", "330 m", "142,714 GT"},
+      {"SHIP", "Carnival Vista", "Caribbean", "43 km/h", "3,936 passengers", "324 m", "133,500 GT"},
+      {"SHIP", "Norwegian Escape", "Various", "43 km/h", "4,266 passengers", "325.9 m", "165,300 GT"},
+      {"DOG", "Labrador", "United Kingdom & Canada", "25-36 kg", "Black, chocolate, yellow", "12-13 years", "1st (2016)"},
+      {"DOG", "English Beagle", "England", "9.1-11.3 kg", "Tricolor", "12-15 years", "5th (2016)"},
+      {"DOG", "British Bulldog", "England", "23-25 kg", "Red, fawn, white, brindle, piebald", "8-10 years", "4th (2016)"},
+      {"DOG", "Great Dane", "Germany", "50-82 kg", "Fawn, blue, brindle, black", "8-10 years", "14th (2016)"},
+      {"CRYPTOCURRENCY", "Bitcoin", "XBT", "Digital gold", "21 million" , "2009", "Satoshi Nakamoto"},
+      {"CRYPTOCURRENCY", "Litecoin", "LTC", "Faster Bitcoin", "84 million" , "2011", "Charlie Lee"},
+      {"CRYPTOCURRENCY", "Ethereum", "ETH", "Programmable contracts and money", "100 million", "2013", "Vitalik Buterin"},
+      {"CRYPTOCURRENCY", "Ripple", "XRP", "Enterprise payment settlement network", "100 billion", "2012", "Arthur Britto, David Schwartz, Ryan Fugger"}};
 
-    // Prints out an array
+    // Prints out data by datatype
     for (int i = 0; i < 24; i++) {
-      for (int j = 0; j < 6; j++) {
-        System.out.print(arrayWithoutHeader[i][j] + "\t");
-      }
+      // Divide the data with newline
       System.out.println();
+      if (arrayWithHeader[i][0].equals("PERSON")) {
+        System.out.println("Person");
+        System.out.println("NAME: " + arrayWithHeader[i][1]);
+        System.out.println("DATE OF BIRTH: " + arrayWithHeader[i][3]);
+        System.out.println("OCCUPATION: " + arrayWithHeader[i][4]);
+        System.out.println("VEHICLE: " + arrayWithHeader[i][5]);
+      } else if (arrayWithHeader[i][0].equals("CAR")) {
+        System.out.println("Car");
+        System.out.println("BRAND: " + arrayWithHeader[i][1]);
+        System.out.println("MODEL: " + arrayWithHeader[i][2]);
+        System.out.println("YEAR: " + arrayWithHeader[i][3]);
+        System.out.println("HORSEPOWER: " + arrayWithHeader[i][5]);
+      } else if (arrayWithHeader[i][0].equals("PLANE")) {
+        System.out.println("Plane");
+        System.out.println("MANUFACTURER: " + arrayWithHeader[i][1]);
+        System.out.println("MODEL: " + arrayWithHeader[i][2]);
+        System.out.println("CAPACITY: " + arrayWithHeader[i][3]);
+        System.out.println("RANGE: " + arrayWithHeader[i][4]);
+      } else if (arrayWithHeader[i][0].equals("SHIP")) {
+        System.out.println("Ship");
+        System.out.println("NAME: " + arrayWithHeader[i][1]);
+        System.out.println("CAPACITY: " + arrayWithHeader[i][4]);
+        System.out.println("LENGTH: " + arrayWithHeader[i][5]);
+        System.out.println("ROUTE: " + arrayWithHeader[i][2]);
+      } else if (arrayWithHeader[i][0].equals("DOG")) {
+        System.out.println("Dog");
+        System.out.println("BREED: " + arrayWithHeader[i][1]);
+        System.out.println("ORIGIN: " + arrayWithHeader[i][2]);
+        System.out.println("PLACE BY POPULARITY: " + arrayWithHeader[i][6]);
+      } else if (arrayWithHeader[i][0].equals("CRYPTOCURRENCY")) {
+        System.out.println("Crypto currency");
+        System.out.println("NAME: " + arrayWithHeader[i][1]);
+        System.out.println("CODE: " + arrayWithHeader[i][2]);
+        System.out.println("DESCRIPTION: " + arrayWithHeader[i][3]);
+      } else {
+        System.out.println("UNSUPPPORTED DATA TYPE: " + arrayWithHeader[i][0]);
+      }
     }
   }
 }
