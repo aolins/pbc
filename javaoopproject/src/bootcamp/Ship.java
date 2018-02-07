@@ -1,6 +1,6 @@
 package bootcamp;
 
-public class Ship implements Printable{
+public class Ship implements Printable, SpeedSupport {
 
     // Name of the ship
     public String name;
@@ -37,5 +37,22 @@ public class Ship implements Printable{
         System.out.println("LENGTH: " + this.lenght + " m");
         System.out.println("ROUTE: " + this.route);
         System.out.println();
+    }
+
+    // Increments the speed of the ship by 1 unit
+    public void goFaster(){
+        this.speed = this.speed + 1.0;
+        System.out.println("Increased the speed of a ship " + this.name);
+    }
+
+    // Decrements the speed of the ship by 1 unit
+    public void goSlower(){
+        this.speed = this.speed - 1.0;
+        System.out.println("Decreased the speed of a ship " + this.name);
+    }
+
+    // Prints out the speed of the ship
+    public void printSpeed(){
+        System.out.println("Ship's " + this.name + " current speed is " + this.speed + " km/h");
     }
 }
